@@ -1,9 +1,10 @@
-import styles from './app.module.css';
+import { Link, Route } from 'react-router-dom';
 
+import { validateBikeSerialNumber } from '@transport-stores/bike-utils';
+
+import styles from './app.module.css';
 import { ReactComponent as Logo } from './logo.svg';
 import star from './star.svg';
-
-import { Route, Link } from 'react-router-dom';
 
 export function App() {
   return (
