@@ -1,33 +1,18 @@
 {
-  "implicitDependencies": {
-    ".eslintrc.json": "*"
-  },
-  "affected": {
-    "defaultBase": "master"
-  },
+  "implicitDependencies": { ".eslintrc.json": "*" },
+  "affected": { "defaultBase": "master" },
   "npmScope": "transport-stores",
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
-      "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
-      }
+      "options": { "cacheableOperations": ["build", "lint", "test", "e2e"] }
     }
   },
   "projects": {
-    "bike-store": {
-      "tags": []
-    },
-    "bike-store-e2e": {
-      "tags": [],
-      "implicitDependencies": ["bike-store"]
-    },
-    "car-store": {
-      "tags": []
-    },
-    "car-store-e2e": {
-      "tags": [],
-      "implicitDependencies": ["car-store"]
-    }
+    "bike-store": { "tags": [] },
+    "bike-store-e2e": { "tags": [], "implicitDependencies": ["bike-store"] },
+    "car-store": { "tags": [] },
+    "car-store-e2e": { "tags": [], "implicitDependencies": ["car-store"] },
+    "bike-store-api": { "tags": [] }
   }
 }

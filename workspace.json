@@ -28,7 +28,9 @@
       "targets": {
         "build": {
           "executor": "@nrwl/web:build",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/bike-store",
             "index": "apps/bike-store/src/index.html",
@@ -39,7 +41,9 @@
               "apps/bike-store/src/favicon.ico",
               "apps/bike-store/src/assets"
             ],
-            "styles": ["apps/bike-store/src/styles.css"],
+            "styles": [
+              "apps/bike-store/src/styles.css"
+            ],
             "scripts": [],
             "webpackConfig": "@nrwl/react/plugins/webpack"
           },
@@ -71,7 +75,8 @@
         "serve": {
           "executor": "@nrwl/web:dev-server",
           "options": {
-            "buildTarget": "bike-store:build"
+            "buildTarget": "bike-store:build",
+            "proxyConfig": "apps/bike-store/proxy.conf.json"
           },
           "configurations": {
             "production": {
@@ -82,12 +87,16 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/bike-store/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": [
+              "apps/bike-store/**/*.{ts,tsx,js,jsx}"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/bike-store"],
+          "outputs": [
+            "coverage/apps/bike-store"
+          ],
           "options": {
             "jestConfig": "apps/bike-store/jest.config.js",
             "passWithNoTests": true
@@ -116,7 +125,9 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/bike-store-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/bike-store-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
@@ -128,7 +139,9 @@
       "targets": {
         "build": {
           "executor": "@nrwl/web:build",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/car-store",
             "index": "apps/car-store/src/index.html",
@@ -139,7 +152,9 @@
               "apps/car-store/src/favicon.ico",
               "apps/car-store/src/assets"
             ],
-            "styles": ["apps/car-store/src/styles.css"],
+            "styles": [
+              "apps/car-store/src/styles.css"
+            ],
             "scripts": [],
             "webpackConfig": "@nrwl/react/plugins/webpack"
           },
@@ -182,12 +197,16 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/car-store/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": [
+              "apps/car-store/**/*.{ts,tsx,js,jsx}"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/car-store"],
+          "outputs": [
+            "coverage/apps/car-store"
+          ],
           "options": {
             "jestConfig": "apps/car-store/jest.config.js",
             "passWithNoTests": true
@@ -216,7 +235,67 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/car-store-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/car-store-e2e/**/*.{js,ts}"
+            ]
+          }
+        }
+      }
+    },
+    "bike-store-api": {
+      "root": "apps/bike-store-api",
+      "sourceRoot": "apps/bike-store-api/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/apps/bike-store-api",
+            "main": "apps/bike-store-api/src/main.ts",
+            "tsConfig": "apps/bike-store-api/tsconfig.app.json",
+            "assets": [
+              "apps/bike-store-api/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/bike-store-api/src/environments/environment.ts",
+                  "with": "apps/bike-store-api/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "bike-store-api:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/bike-store-api/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/bike-store-api"
+          ],
+          "options": {
+            "jestConfig": "apps/bike-store-api/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }
